@@ -1,0 +1,360 @@
+
+<style>
+:root{--p50:#EEEDFE;--p100:#CECBF6;--p600:#534AB7;--p800:#3C3489;--t50:#E1F5EE;--t100:#9FE1CB;--t600:#0F6E56;--t800:#085041;--a50:#FAEEDA;--a100:#FAC775;--a600:#854F0B;--a800:#633806;--co50:#FAECE7;--co100:#F5C4B3;--co600:#993C1D;--co800:#712B13;--b50:#E6F1FB;--b100:#B5D4F4;--b600:#185FA5;--b800:#0C447C;--g50:#F1EFE8;--g100:#D3D1C7;--g600:#5F5E5A;--g800:#444441}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;background:transparent;color:var(--color-text-primary,#2C2C2A);line-height:1.6}
+.hero{background:linear-gradient(135deg,#3C3489 0%,#534AB7 55%,#0F6E56 100%);color:#fff;padding:32px 20px 36px;border-radius:14px;text-align:center;margin-bottom:24px}
+.hero-badge{display:inline-block;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:20px;padding:3px 14px;font-size:11px;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:12px}
+.hero h1{font-size:28px;font-weight:700;margin-bottom:6px}.hero h1 span{color:#9FE1CB}
+.hero-sub{font-size:13px;opacity:.85;max-width:520px;margin:0 auto 16px}
+.hero-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+.hero-pill{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:4px 12px;font-size:12px}
+.pipeline{display:flex;flex-wrap:wrap;align-items:center;gap:5px;justify-content:center;padding:20px;background:var(--color-background-primary,#fff);border-radius:12px;border:0.5px solid var(--color-border-tertiary,#D3D1C7);margin-bottom:20px}
+.ps{text-align:center;padding:8px 12px;border-radius:9px;min-width:82px}
+.ps .pi{font-size:18px}.ps .pn{font-size:11px;font-weight:700}.ps .ph{font-size:10px;opacity:.6}
+.arr{font-size:16px;opacity:.4}
+.tab-bar{display:flex;border-bottom:2px solid var(--color-border-tertiary,#D3D1C7);margin-bottom:24px}
+.tb{padding:10px 22px;font-size:14px;font-weight:600;border:none;background:none;cursor:pointer;color:var(--color-text-secondary,#888780);border-bottom:3px solid transparent;margin-bottom:-2px;transition:color .2s,border-color .2s;display:flex;align-items:center;gap:7px}
+.tb.active{color:var(--p600);border-bottom-color:var(--p600)}
+.tb .bx{background:var(--p50);color:var(--p600);border-radius:20px;padding:2px 7px;font-size:10px;font-weight:700}
+.tb.active .bx{background:var(--p600);color:#fff}
+.tp{display:none}.tp.active{display:block}
+.phases{display:flex;flex-direction:column;gap:16px}
+.pc{border-radius:12px;overflow:hidden;border:0.5px solid var(--color-border-tertiary,#D3D1C7);background:var(--color-background-primary,#fff)}
+.ph{display:flex;align-items:center;gap:12px;padding:14px 18px;cursor:pointer;user-select:none}
+.picon{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.pht h3{font-size:14px;font-weight:700;margin-bottom:1px}.pht p{font-size:11px;color:var(--color-text-secondary,#888780)}
+.ptog{margin-left:auto;font-size:16px;color:var(--color-text-secondary,#888780);transition:transform .2s}
+.pc.open .ptog{transform:rotate(180deg)}
+.pb{padding:0 18px 18px;display:none}
+.pc.open .pb{display:block}
+.dg{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:12px}
+.dc{border-radius:9px;padding:12px 14px;border:0.5px solid var(--color-border-tertiary,#D3D1C7);background:var(--g50)}
+.dn{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--color-text-secondary,#888780);margin-bottom:4px}
+.dt{font-size:13px;font-weight:700;margin-bottom:2px;color:var(--color-text-primary,#2C2C2A)}
+.dth{font-size:11px;color:var(--color-text-secondary,#888780);margin-bottom:7px}
+.dtags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:7px}
+.tag{font-size:10px;padding:2px 8px;border-radius:20px;font-weight:600}
+.tl{background:var(--b50);color:var(--b800)}.ta{background:var(--t50);color:var(--t800)}.tc{background:var(--p50);color:var(--p800)}.th{background:var(--a50);color:var(--a800)}.tp2{background:var(--co50);color:var(--co800)}
+.dd{font-size:12px;color:var(--color-text-secondary,#5F5E5A);line-height:1.5}
+.pbox{border-radius:12px;padding:18px;border:1px solid;display:flex;gap:16px;align-items:flex-start;margin:14px 0}
+.pbox h3{font-size:15px;font-weight:700;margin-bottom:3px}.pbox p{font-size:12px;color:var(--color-text-secondary,#5F5E5A);margin-bottom:8px}
+.psteps{display:flex;flex-wrap:wrap;gap:6px}
+.pstep{font-size:11px;padding:3px 10px;border-radius:20px;font-weight:600}
+.kit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+.kc{background:var(--color-background-primary,#fff);border-radius:12px;border:0.5px solid var(--color-border-tertiary,#D3D1C7);padding:16px}
+.kc h4{font-size:13px;font-weight:700;margin-bottom:10px}
+.ki{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:0.5px solid var(--g50);font-size:12px;color:var(--color-text-secondary,#5F5E5A)}
+.ki:last-child{border-bottom:none}
+.kdot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.assess-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.ac{border-radius:9px;padding:14px;border:0.5px solid var(--color-border-tertiary,#D3D1C7)}
+.ac h4{font-size:13px;font-weight:700;margin-bottom:7px}
+.ac ul{list-style:none}.ac ul li{font-size:12px;color:var(--color-text-secondary,#5F5E5A);padding:3px 0 3px 12px;position:relative}
+.ac ul li::before{content:'·';position:absolute;left:0;color:var(--color-text-secondary,#888780)}
+.cert-box{background:linear-gradient(135deg,var(--p50),var(--t50));border-radius:14px;border:1px solid var(--p100);padding:24px;text-align:center;max-width:420px;margin:0 auto}
+.sw-ladder{display:flex;align-items:center;gap:0;flex-wrap:wrap;margin:14px 0 24px}
+.sw-step{background:var(--color-background-primary,#fff);border:0.5px solid var(--color-border-tertiary,#D3D1C7);border-radius:9px;padding:10px 14px;text-align:center;min-width:100px}
+.sw-name{font-size:13px;font-weight:700}.sw-lbl{font-size:10px;color:var(--color-text-secondary,#888780);margin-top:1px}
+.sw-arr{font-size:18px;color:var(--color-text-secondary,#B4B2A9);padding:0 4px}
+h2.section-t{font-size:16px;font-weight:700;margin-bottom:3px;color:var(--color-text-primary,#2C2C2A)}
+p.section-s{font-size:12px;color:var(--color-text-secondary,#888780);margin-bottom:18px}
+hr.div{border:none;border-top:0.5px solid var(--color-border-tertiary,#D3D1C7);margin:24px 0}
+</style>
+
+<h2 class="sr-only">TechSpark NEP Bagless Day Module — Class 6 and Class 7 curriculum overview with phases, kit details, and assessment framework</h2>
+
+<div class="hero">
+  <div class="hero-badge">NEP 2020 · Bagless Day Programme</div>
+  <h1>Tech<span>Spark</span> — Class 6 & 7</h1>
+  <p class="hero-sub">Curiosity → Simulation → Creation · Hands-on embedded + coding · Bilingual (Hindi + English)</p>
+  <div class="hero-pills">
+    <span class="hero-pill">10 Sessions / Class</span>
+    <span class="hero-pill">Half-day 3–4 hrs</span>
+    <span class="hero-pill">Arduino + mBlock</span>
+    <span class="hero-pill">Mini Project Certificate</span>
+  </div>
+</div>
+
+<h2 class="section-t">Core Learning Pipeline / सीखने की पाइपलाइन</h2>
+<p class="section-s">Every session follows this sequence</p>
+<div class="pipeline">
+  <div class="ps" style="background:var(--p50)"><div class="pi">👀</div><div class="pn" style="color:var(--p800)">Observe</div><div class="ph">देखना</div></div>
+  <span class="arr">→</span>
+  <div class="ps" style="background:var(--t50)"><div class="pi">🧠</div><div class="pn" style="color:var(--t800)">Think</div><div class="ph">सोचना</div></div>
+  <span class="arr">→</span>
+  <div class="ps" style="background:var(--b50)"><div class="pi">💻</div><div class="pn" style="color:var(--b800)">Simulate</div><div class="ph">अनुकरण</div></div>
+  <span class="arr">→</span>
+  <div class="ps" style="background:var(--a50)"><div class="pi">⚙️</div><div class="pn" style="color:var(--a800)">Control</div><div class="ph">नियंत्रण</div></div>
+  <span class="arr">→</span>
+  <div class="ps" style="background:#EAF3DE"><div class="pi">🔧</div><div class="pn" style="color:#27500A">Build</div><div class="ph">बनाना</div></div>
+  <span class="arr">→</span>
+  <div class="ps" style="background:var(--co50)"><div class="pi">🎤</div><div class="pn" style="color:var(--co800)">Present</div><div class="ph">प्रस्तुति</div></div>
+</div>
+
+<h2 class="section-t">Software Learning Ladder / सॉफ्टवेयर सीढ़ी</h2>
+<p class="section-s">Cognitive ramp from logic blocks to real hardware</p>
+<div class="sw-ladder">
+  <div class="sw-step" style="background:var(--p50);border-color:var(--p100)"><div class="sw-name" style="color:var(--p800)">Scratch</div><div class="sw-lbl">Logic Building</div></div>
+  <span class="sw-arr">→</span>
+  <div class="sw-step" style="background:var(--t50);border-color:var(--t100)"><div class="sw-name" style="color:var(--t800)">Tinkercad</div><div class="sw-lbl">Simulation</div></div>
+  <span class="sw-arr">→</span>
+  <div class="sw-step" style="background:var(--b50);border-color:var(--b100)"><div class="sw-name" style="color:var(--b800)">mBlock</div><div class="sw-lbl">Block → Hardware</div></div>
+  <span class="sw-arr">→</span>
+  <div class="sw-step" style="background:var(--a50);border-color:var(--a100)"><div class="sw-name" style="color:var(--a800)">Arduino</div><div class="sw-lbl">Real Circuits</div></div>
+</div>
+
+<hr class="div">
+
+<!-- TABS -->
+<div class="tab-bar">
+  <button class="tb active" onclick="sw('c6',this)">Class 6 <span class="bx">Foundation</span></button>
+  <button class="tb" onclick="sw('c7',this)">Class 7 <span class="bx">Application</span></button>
+  <button class="tb" onclick="sw('kit',this)">Kit & Assessment <span class="bx">Plan</span></button>
+</div>
+
+<!-- CLASS 6 -->
+<div id="tc6" class="tp active">
+  <p style="font-size:12px;color:var(--color-text-secondary,#888780);margin-bottom:18px">Focus: Curiosity → Logic → Simulation → Light Hardware · 70% activity, 30% concept</p>
+  <div class="phases">
+
+    <div class="pc open">
+      <div class="ph" onclick="tog(this.parentElement)">
+        <div class="picon" style="background:var(--p50)">🧠</div>
+        <div class="pht"><h3 style="color:var(--p800)">Phase 1 — Thinking & Logic / सोचना और तर्क</h3><p>Day 1–3 · Scratch · Input → Process → Output</p></div>
+        <span class="ptog">▼</span>
+      </div>
+      <div class="pb">
+        <div class="dg">
+          <div class="dc"><div class="dn">Day 1</div><div class="dt">How Machines Think</div><div class="dth">मशीनें कैसे सोचती हैं?</div><div class="dtags"><span class="tag tc">Concept</span><span class="tag ta">Activity</span></div><div class="dd">Human Robot game — students give and follow instructions to experience Input → Process → Output. Worksheet: draw your machine flow.</div></div>
+          <div class="dc"><div class="dn">Day 2</div><div class="dt">Patterns & Sequences</div><div class="dth">क्रम और पैटर्न</div><div class="dtags"><span class="tag tl">Scratch</span><span class="tag ta">Activity</span></div><div class="dd">Move a character through a maze using sequence blocks. No prior coding needed. Challenge: add sound on finish.</div></div>
+          <div class="dc"><div class="dn">Day 3</div><div class="dt">Decisions — If/Else</div><div class="dth">अगर/नहीं तो</div><div class="dtags"><span class="tag tl">Scratch</span><span class="tag tc">Concept</span></div><div class="dd">Conditional thinking: "If button pressed → sprite jumps". Students design a decision tree on paper first, then code it.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pc open">
+      <div class="ph" onclick="tog(this.parentElement)">
+        <div class="picon" style="background:var(--t50)">💡</div>
+        <div class="pht"><h3 style="color:var(--t800)">Phase 2 — Simulation World / अनुकरण की दुनिया</h3><p>Day 4–6 · Tinkercad · Virtual circuits</p></div>
+        <span class="ptog">▼</span>
+      </div>
+      <div class="pb">
+        <div class="dg">
+          <div class="dc"><div class="dn">Day 4</div><div class="dt">Electricity Basics</div><div class="dth">बिजली की मूल बातें</div><div class="dtags"><span class="tag tl">Tinkercad</span><span class="tag tc">Circuit Loop</span></div><div class="dd">Build a virtual LED circuit. Battery → wire → resistor → LED. Understand that a circuit is a complete loop.</div></div>
+          <div class="dc"><div class="dn">Day 5</div><div class="dt">Control with a Switch</div><div class="dth">स्विच से नियंत्रण</div><div class="dtags"><span class="tag tl">Tinkercad</span><span class="tag ta">Activity</span></div><div class="dd">Add a push button: pressed → LED ON, released → OFF. Switch = decision maker in a circuit.</div></div>
+          <div class="dc"><div class="dn">Day 6</div><div class="dt">Sensors — Machines See</div><div class="dth">सेंसर — मशीनें देखती हैं</div><div class="dtags"><span class="tag tl">Tinkercad</span><span class="tag tc">LDR Sensor</span></div><div class="dd">Simulate an LDR: dark → LED ON, bright → OFF. Discussion: streetlights, phone auto-brightness.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pc open">
+      <div class="ph" onclick="tog(this.parentElement)">
+        <div class="picon" style="background:var(--a50)">🔌</div>
+        <div class="pht"><h3 style="color:var(--a800)">Phase 3 — Real Hardware / असली सर्किट</h3><p>Day 7–8 · Arduino UNO + mBlock</p></div>
+        <span class="ptog">▼</span>
+      </div>
+      <div class="pb">
+        <div class="dg">
+          <div class="dc"><div class="dn">Day 7</div><div class="dt">First Real Circuit!</div><div class="dth">पहला असली सर्किट!</div><div class="dtags"><span class="tag th">Arduino</span><span class="tag tl">mBlock</span></div><div class="dd">Guided build: LED blinks on breadboard. Roles: Builder, Thinker, Presenter. First hardware "Hello World"!</div></div>
+          <div class="dc"><div class="dn">Day 8</div><div class="dt">Button + LED System</div><div class="dth">बटन + एलईडी सिस्टम</div><div class="dtags"><span class="tag th">Arduino</span><span class="tag ta">Activity</span></div><div class="dd">Add a physical push button with mBlock code. Students modify blink speed and explore freely.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pc open">
+      <div class="ph" onclick="tog(this.parentElement)">
+        <div class="picon" style="background:var(--co50)">🚀</div>
+        <div class="pht"><h3 style="color:var(--co800)">Phase 4 — Mini Project / लघु परियोजना</h3><p>Day 9–10 · Build + Present + Certificate</p></div>
+        <span class="ptog">▼</span>
+      </div>
+      <div class="pb">
+        <div class="pbox" style="background:var(--a50);border-color:var(--a100)">
+          <div style="font-size:32px;flex-shrink:0">🌙</div>
+          <div>
+            <h3 style="color:var(--a800)">Smart Night Light / स्मार्ट नाइट लाइट</h3>
+            <p>LDR sensor auto-turns LED on when dark, off when bright — just like real streetlights!</p>
+            <div class="psteps">
+              <span class="pstep" style="background:var(--a100);color:var(--a800)">LDR Sensor</span>
+              <span class="pstep" style="background:var(--a100);color:var(--a800)">mBlock Code</span>
+              <span class="pstep" style="background:var(--a100);color:var(--a800)">LED Output</span>
+              <span class="pstep" style="background:var(--a100);color:var(--a800)">Cardboard Housing</span>
+            </div>
+          </div>
+        </div>
+        <div class="dg">
+          <div class="dc"><div class="dn">Day 9</div><div class="dt">Build Day</div><div class="dth">बनाने का दिन</div><div class="dtags"><span class="tag tp2">Project</span><span class="tag th">Hardware</span></div><div class="dd">Teams assemble Smart Night Light. Each student fills a build log worksheet. Decorate housing with craft materials.</div></div>
+          <div class="dc"><div class="dn">Day 10</div><div class="dt">Demo & Certificate</div><div class="dth">प्रदर्शनी और प्रमाणपत्र</div><div class="dtags"><span class="tag tp2">Showcase</span><span class="tag ta">Certificate</span></div><div class="dd">Each group demonstrates and explains their project. Certificate awarded. Photos for portfolio.</div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- CLASS 7 -->
+<div id="tc7" class="tp">
+  <p style="font-size:12px;color:var(--color-text-secondary,#888780);margin-bottom:18px">Focus: Faster ramp-up → Control Systems → Actuators → Real-world automation. Building on Class 6.</p>
+  <div class="phases">
+
+    <div class="pc open">
+      <div class="ph" onclick="tog(this.parentElement)">
+        <div class="picon" style="background:var(--p50)">⚡</div>
+        <div class="pht"><h3 style="color:var(--p800)">Phase 1 — Quick Recap + Jump In / त्वरित दोहराव</h3><p>Day 1–2 · mBlock from Day 1</p></div>
+        <span class="ptog">▼</span>
+      </div>
+      <div class="pb">
+        <div class="dg">
+          <div class="dc"><div class="dn">Day 1</div><div class="dt">Recap + mBlock Intro</div><div class="dth">दोहराव + mBlock परिचय</div><div class="dtags"><span class="tag tl">mBlock</span><span class="tag tc">Review</span></div><div class="dd">Flashcard review of I/O concepts. Direct mBlock intro — LED blink in 10 min. Challenge: blink SOS (3 short, 3 long).</div></div>
+          <div class="dc"><div class="dn">Day 2</div><div class="dt">Multi-LED: Traffic Light</div><div class="dth">ट्रैफिक लाइट</div><div class="dtags"><span class="tag tl">mBlock</span><span class="tag th">Arduino</span></div><div class="dd">Control 3 LEDs independently. Build traffic light sequence: Red → Orange → Green. Introduce timing loops and variables.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pc open">
+      <div class="ph" onclick="tog(this.parentElement)">
+        <div class="picon" style="background:var(--t50)">🎛️</div>
+        <div class="pht"><h3 style="color:var(--t800)">Phase 2 — Control Systems / नियंत्रण प्रणाली</h3><p>Day 3–5 · Sensors + Conditions + AND/OR Logic</p></div>
+        <span class="ptog">▼</span>
+      </div>
+      <div class="pb">
+        <div class="dg">
+          <div class="dc"><div class="dn">Day 3</div><div class="dt">Sensor-Based Control</div><div class="dth">सेंसर आधारित नियंत्रण</div><div class="dtags"><span class="tag th">LDR / Button</span><span class="tag tc">Automation</span></div><div class="dd">Sensor reads environment → triggers LED or buzzer. Map: What condition? → What action? Real examples: AC thermostat.</div></div>
+          <div class="dc"><div class="dn">Day 4</div><div class="dt">Temperature Alert System</div><div class="dth">तापमान अलर्ट</div><div class="dtags"><span class="tag th">Temp Sensor</span><span class="tag ta">Activity</span></div><div class="dd">If temp &gt; threshold → buzzer ON + Red LED. Else → Green LED. Groups set their own threshold values.</div></div>
+          <div class="dc"><div class="dn">Day 5</div><div class="dt">AND / OR Logic</div><div class="dth">AND / OR तर्क</div><div class="dtags"><span class="tag tc">Logic Gates</span><span class="tag tl">mBlock</span></div><div class="dd">Multiple conditions: "If dark AND button pressed → alarm". Students design and test their own compound condition.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pc open">
+      <div class="ph" onclick="tog(this.parentElement)">
+        <div class="picon" style="background:var(--b50)">🤖</div>
+        <div class="pht"><h3 style="color:var(--b800)">Phase 3 — Actuators / एक्चुएटर</h3><p>Day 6–7 · Servo Motor + Ultrasonic Sensor</p></div>
+        <span class="ptog">▼</span>
+      </div>
+      <div class="pb">
+        <div class="dg">
+          <div class="dc"><div class="dn">Day 6</div><div class="dt">Servo Motor — Things Move!</div><div class="dth">सर्वो मोटर — चीजें हिलती हैं!</div><div class="dtags"><span class="tag th">Servo SG90</span><span class="tag ta">Activity</span></div><div class="dd">Control servo angle 0°→90°→180°. Build a paper arm that waves. Where are servos used? (RC cars, robots, gimbal cameras)</div></div>
+          <div class="dc"><div class="dn">Day 7</div><div class="dt">Ultrasonic Distance Sense</div><div class="dth">दूरी नापना</div><div class="dtags"><span class="tag th">HC-SR04</span><span class="tag tc">Distance</span></div><div class="dd">HC-SR04 measures distance. If object &lt;10cm → buzzer beep. Real-world: parking sensors in cars!</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pc open">
+      <div class="ph" onclick="tog(this.parentElement)">
+        <div class="picon" style="background:#EAF3DE">🔗</div>
+        <div class="pht"><h3 style="color:#27500A">Phase 4 — System Building / सिस्टम निर्माण</h3><p>Day 8 · Combine sensor + actuator</p></div>
+        <span class="ptog">▼</span>
+      </div>
+      <div class="pb">
+        <div class="dg">
+          <div class="dc" style="grid-column:1/-1"><div class="dn">Day 8</div><div class="dt">Design Your Own System</div><div class="dth">अपना सिस्टम बनाएँ</div><div class="dtags"><span class="tag th">Full Kit</span><span class="tag tc">System Design</span><span class="tag ta">Activity</span></div><div class="dd">Students draw: "What is my input? Output? Condition?" Then build a partial prototype. Groups share system diagrams. This feeds directly into the final project.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pc open">
+      <div class="ph" onclick="tog(this.parentElement)">
+        <div class="picon" style="background:var(--co50)">🚀</div>
+        <div class="pht"><h3 style="color:var(--co800)">Phase 5 — Final Project / अंतिम परियोजना</h3><p>Day 9–10 · Build + Demo + Certificate</p></div>
+        <span class="ptog">▼</span>
+      </div>
+      <div class="pb">
+        <div class="pbox" style="background:var(--t50);border-color:var(--t100)">
+          <div style="font-size:32px;flex-shrink:0">🅿️</div>
+          <div>
+            <h3 style="color:var(--t800)">Smart Parking System / स्मार्ट पार्किंग सिस्टम</h3>
+            <p>Ultrasonic detects car → servo opens gate → LED shows status. All Phase 3 components in one real-world model.</p>
+            <div class="psteps">
+              <span class="pstep" style="background:var(--t100);color:var(--t800)">HC-SR04 Sensor</span>
+              <span class="pstep" style="background:var(--t100);color:var(--t800)">Servo Gate</span>
+              <span class="pstep" style="background:var(--t100);color:var(--t800)">RGB LED Status</span>
+              <span class="pstep" style="background:var(--t100);color:var(--t800)">mBlock Code</span>
+              <span class="pstep" style="background:var(--t100);color:var(--t800)">Cardboard Model</span>
+            </div>
+          </div>
+        </div>
+        <div class="dg">
+          <div class="dc"><div class="dn">Day 9</div><div class="dt">Build the Parking System</div><div class="dth">पार्किंग सिस्टम बनाएँ</div><div class="dtags"><span class="tag tp2">Project</span><span class="tag th">Hardware</span></div><div class="dd">Teams build and code. Instructor provides guided troubleshooting checklist. Groups may add extras (buzzer, counter).</div></div>
+          <div class="dc"><div class="dn">Day 10</div><div class="dt">Demo, Explain & Certify</div><div class="dth">प्रदर्शनी और प्रमाणपत्र</div><div class="dtags"><span class="tag tp2">Showcase</span><span class="tag ta">Certificate</span></div><div class="dd">Demo to teachers/parents. Each student explains their role + one thing they learned. Certificate + project photo for portfolio.</div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- KIT & ASSESSMENT -->
+<div id="tkit" class="tp">
+  <h2 class="section-t">Hardware Kits / हार्डवेयर किट</h2>
+  <p class="section-s">Instructor brings kit · School provides computers</p>
+  <div class="kit-grid" style="margin-bottom:24px">
+    <div class="kc">
+      <h4 style="color:var(--p800)">Class 6 Kit (~₹6,000)</h4>
+      <div class="ki"><span class="kdot" style="background:var(--p600)"></span>Arduino UNO + USB Cable</div>
+      <div class="ki"><span class="kdot" style="background:var(--p600)"></span>Breadboard (half-size)</div>
+      <div class="ki"><span class="kdot" style="background:var(--p600)"></span>LEDs — Red, Green, Yellow (×5 each)</div>
+      <div class="ki"><span class="kdot" style="background:var(--p600)"></span>Resistors (220Ω, 10kΩ)</div>
+      <div class="ki"><span class="kdot" style="background:var(--p600)"></span>Push Buttons ×4 + Buzzer</div>
+      <div class="ki"><span class="kdot" style="background:var(--p600)"></span>LDR Sensor ×2</div>
+      <div class="ki"><span class="kdot" style="background:var(--p600)"></span>Jumper Wires + Craft materials</div>
+    </div>
+    <div class="kc">
+      <h4 style="color:var(--t800)">Class 7 Kit (~₹7,500)</h4>
+      <div class="ki"><span class="kdot" style="background:var(--t600)"></span>Everything in Class 6 Kit</div>
+      <div class="ki"><span class="kdot" style="background:var(--t600)"></span>Servo Motor (SG90)</div>
+      <div class="ki"><span class="kdot" style="background:var(--t600)"></span>Ultrasonic Sensor (HC-SR04)</div>
+      <div class="ki"><span class="kdot" style="background:var(--t600)"></span>RGB LED</div>
+      <div class="ki"><span class="kdot" style="background:var(--t600)"></span>Temperature Sensor (LM35)</div>
+      <div class="ki"><span class="kdot" style="background:var(--t600)"></span>Relay Module</div>
+      <div class="ki"><span class="kdot" style="background:var(--t600)"></span>Extra wires + cardboard</div>
+    </div>
+    <div class="kc">
+      <h4 style="color:var(--g800)">Classroom Model</h4>
+      <div class="ki"><span class="kdot" style="background:var(--g600)"></span>3 students per group</div>
+      <div class="ki"><span class="kdot" style="background:var(--g600)"></span>15 kits per class of 45</div>
+      <div class="ki" style="flex-direction:column;align-items:flex-start;gap:4px">
+        <span style="display:flex;align-items:center;gap:8px"><span class="kdot" style="background:var(--p600)"></span><b>Builder</b> — assembles circuit</span>
+        <span style="display:flex;align-items:center;gap:8px"><span class="kdot" style="background:var(--t600)"></span><b>Thinker</b> — codes the logic</span>
+        <span style="display:flex;align-items:center;gap:8px"><span class="kdot" style="background:var(--a600)"></span><b>Presenter</b> — explains to class</span>
+      </div>
+      <div class="ki"><span class="kdot" style="background:var(--g600)"></span>Roles rotate every session</div>
+    </div>
+  </div>
+
+  <hr class="div">
+  <h2 class="section-t">Assessment — NEP Aligned / मूल्यांकन</h2>
+  <p class="section-s">No written tests · Observation + Demonstration + Portfolio</p>
+  <div class="assess-grid" style="margin-bottom:24px">
+    <div class="ac" style="background:var(--p50);border-color:var(--p100)"><h4 style="color:var(--p800)">Cognitive / संज्ञानात्मक</h4><ul><li>Understands I/O logic</li><li>Can explain their system</li><li>Identifies real-world uses</li></ul></div>
+    <div class="ac" style="background:var(--t50);border-color:var(--t100)"><h4 style="color:var(--t800)">Psychomotor / क्रियात्मक</h4><ul><li>Builds circuit independently</li><li>Handles components safely</li><li>Debugs a basic issue</li></ul></div>
+    <div class="ac" style="background:var(--a50);border-color:var(--a100)"><h4 style="color:var(--a800)">Affective / भावात्मक</h4><ul><li>Shows curiosity</li><li>Collaborates in team</li><li>Persists when stuck</li></ul></div>
+    <div class="ac" style="background:var(--co50);border-color:var(--co100)"><h4 style="color:var(--co800)">Methods / विधि</h4><ul><li>Instructor checklist (per day)</li><li>Build log worksheet</li><li>Final project demo</li></ul></div>
+  </div>
+
+  <hr class="div">
+  <h2 class="section-t" style="text-align:center">Completion Certificate / पूर्णता प्रमाणपत्र</h2>
+  <div class="cert-box" style="margin-top:14px">
+    <div style="font-size:36px;margin-bottom:8px">🎓</div>
+    <div style="font-size:17px;font-weight:700;color:var(--p800);margin-bottom:4px">TechSpark Certificate of Completion</div>
+    <div style="font-size:12px;color:var(--color-text-secondary,#5F5E5A);margin-bottom:14px">Awarded on completing 10 sessions + presenting the mini project</div>
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:7px">
+      <span style="font-size:11px;background:var(--color-background-primary,#fff);border:0.5px solid var(--g100);border-radius:7px;padding:5px 10px;color:var(--g800)">Project Title</span>
+      <span style="font-size:11px;background:var(--color-background-primary,#fff);border:0.5px solid var(--g100);border-radius:7px;padding:5px 10px;color:var(--g800)">Skills Demonstrated</span>
+      <span style="font-size:11px;background:var(--color-background-primary,#fff);border:0.5px solid var(--g100);border-radius:7px;padding:5px 10px;color:var(--g800)">Instructor Signature</span>
+      <span style="font-size:11px;background:var(--color-background-primary,#fff);border:0.5px solid var(--g100);border-radius:7px;padding:5px 10px;color:var(--g800)">School Stamp</span>
+      <span style="font-size:11px;background:var(--color-background-primary,#fff);border:0.5px solid var(--g100);border-radius:7px;padding:5px 10px;color:var(--g800)">Company Branding</span>
+      <span style="font-size:11px;background:var(--color-background-primary,#fff);border:0.5px solid var(--g100);border-radius:7px;padding:5px 10px;color:var(--g800)">Date & Class</span>
+    </div>
+  </div>
+</div>
+
+<script>
+function sw(cls,btn){
+  document.querySelectorAll('.tp').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tb').forEach(b=>b.classList.remove('active'));
+  document.getElementById('t'+cls).classList.add('active');
+  btn.classList.add('active');
+}
+function tog(card){card.classList.toggle('open')}
+</script>
